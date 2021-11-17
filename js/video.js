@@ -8,6 +8,9 @@ window.addEventListener("load", function() {
 document.querySelector("#play").addEventListener("click", function() {
 	console.log("Play Video");
 	video.play();
+	var percentage = document.querySelector('#slider').value;
+	video.volume = percentage/100;
+	volume.innerHTML = (percentage + "%");
 });
 
 document.querySelector("#pause").addEventListener("click", function() {
@@ -45,9 +48,11 @@ document.querySelector('#skip').addEventListener('click', function() {
 	console.log("New location " + video.currentTime)
 });
 
-document.querySelector("#slider").addEventListener('click', function() {
-	video.volume = this.value + "%";
-	document.getElementById('volume').innerText = this.value;
+document.querySelector("#slider").addEventListener('change', function() {
+	var percentage = document.querySelector('#slider').value;
+	video.volume = percentage/100;
+	volume.innerHTML = (percentage + "%");
+	console.log(video.volume);
 });
 
 document.querySelector("#vintage").addEventListener('click', function() {
